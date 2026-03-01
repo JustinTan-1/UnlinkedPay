@@ -170,10 +170,10 @@ export function UnlinkWalletSetup() {
 
   if (!ready || isSwitching) {
     return (
-      <div className="bg-gray-900 rounded-xl p-6 border border-gray-800">
+      <div className="bg-white rounded-xl p-6 border border-gray-200">
         <div className="flex items-center gap-3">
           <div className="animate-spin w-5 h-5 border-2 border-emerald-500 border-t-transparent rounded-full" />
-          <span className="text-gray-400">
+          <span className="text-gray-500">
             {isSwitching ? "Switching wallet..." : "Initializing privacy layer..."}
           </span>
         </div>
@@ -187,12 +187,12 @@ export function UnlinkWalletSetup() {
 
     if (ownerMismatch) {
       return (
-        <div className="bg-gray-900 rounded-xl p-6 border border-gray-800">
+        <div className="bg-white rounded-xl p-6 border border-gray-200">
           <div className="flex items-center gap-2 mb-3">
             <AlertCircle className="text-yellow-400" size={20} />
-            <h3 className="text-white font-semibold">Wallet Mismatch</h3>
+            <h3 className="text-gray-900 font-semibold">Wallet Mismatch</h3>
           </div>
-          <p className="text-sm text-gray-400 mb-3">
+          <p className="text-sm text-gray-500 mb-3">
             This private wallet belongs to a different account. Reset to create one for your current address.
           </p>
           <button
@@ -207,16 +207,16 @@ export function UnlinkWalletSetup() {
     }
 
     return (
-      <div className="bg-gray-900 rounded-xl p-6 border border-gray-800">
+      <div className="bg-white rounded-xl p-6 border border-gray-200">
         <div className="flex items-center justify-between mb-3">
           <div className="flex items-center gap-2">
-            <Shield className="text-emerald-400" size={20} />
-            <h3 className="text-white font-semibold">Unlink Address</h3>
+            <Shield className="text-teal-600" size={20} />
+            <h3 className="text-gray-900 font-semibold">Unlink Address</h3>
           </div>
         </div>
-        <div className="bg-gray-800 rounded-lg p-3">
+        <div className="bg-gray-100 rounded-lg p-3">
           <p className="text-xs text-gray-500 mb-1">Unlink Address</p>
-          <p className="text-sm text-emerald-400 font-mono break-all">
+          <p className="text-sm text-teal-600 font-mono break-all">
             {accounts[0]?.address || "Loading..."}
           </p>
         </div>
@@ -230,24 +230,24 @@ export function UnlinkWalletSetup() {
   }
 
   return (
-    <div className="bg-gray-900 rounded-xl p-6 border border-gray-800">
+    <div className="bg-white rounded-xl p-6 border border-gray-200">
       <div className="flex items-center gap-2 mb-4">
-        <Key className="text-emerald-400" size={20} />
-        <h3 className="text-white font-semibold">Setup Private Wallet</h3>
+        <Key className="text-teal-600" size={20} />
+        <h3 className="text-gray-900 font-semibold">Setup Private Wallet</h3>
       </div>
 
       {address && (
-        <div className="bg-gray-800 rounded-lg p-2 px-3 mb-4">
-          <p className="text-xs text-gray-400">
-            Creating wallet for <span className="text-white font-mono">{address.slice(0, 6)}...{address.slice(-4)}</span>
+        <div className="bg-gray-100 rounded-lg p-2 px-3 mb-4">
+          <p className="text-xs text-gray-500">
+            Creating wallet for <span className="text-gray-900 font-mono">{address.slice(0, 6)}...{address.slice(-4)}</span>
           </p>
         </div>
       )}
 
       {error && (
         <div className="flex items-center gap-2 bg-red-900/30 border border-red-800 rounded-lg p-3 mb-4">
-          <AlertCircle size={16} className="text-red-400" />
-          <p className="text-sm text-red-400">{error}</p>
+          <AlertCircle size={16} className="text-red-500" />
+          <p className="text-sm text-red-500">{error}</p>
         </div>
       )}
 
@@ -257,20 +257,20 @@ export function UnlinkWalletSetup() {
             <p className="text-xs text-yellow-400 font-semibold mb-2">
               ⚠️ Save your recovery phrase — it will not be shown again
             </p>
-            <p className="text-sm text-gray-300 font-mono leading-relaxed break-all">
+            <p className="text-sm text-gray-600 font-mono leading-relaxed break-all">
               {mnemonic}
             </p>
           </div>
           <button
             onClick={handleCopyMnemonic}
-            className="flex items-center gap-2 text-sm text-gray-400 hover:text-white transition-colors"
+            className="flex items-center gap-2 text-sm text-gray-500 hover:text-gray-900 transition-colors"
           >
             {copied ? <Check size={14} /> : <Copy size={14} />}
             {copied ? "Copied!" : "Copy to clipboard"}
           </button>
           <button
             onClick={() => setMnemonic(null)}
-            className="w-full bg-emerald-600 hover:bg-emerald-500 text-white py-2 rounded-lg font-medium transition-colors"
+            className="w-full bg-gray-900 hover:bg-gray-800 text-white py-2 rounded-lg font-medium transition-colors"
           >
             I&apos;ve saved it — Continue
           </button>
@@ -281,13 +281,13 @@ export function UnlinkWalletSetup() {
             value={importInput}
             onChange={(e) => setImportInput(e.target.value)}
             placeholder="Enter your 24-word recovery phrase..."
-            className="w-full bg-gray-800 border border-gray-700 rounded-lg p-3 text-sm text-white placeholder-gray-500 resize-none h-24 focus:border-emerald-500 focus:outline-none"
+            className="w-full bg-gray-100 border border-gray-300 rounded-lg p-3 text-sm text-gray-900 placeholder-gray-500 resize-none h-24 focus:border-emerald-500 focus:outline-none"
           />
           <div className="flex gap-2">
             <button
               onClick={handleImportWallet}
               disabled={!importInput.trim() || loading}
-              className="flex-1 bg-emerald-600 hover:bg-emerald-500 disabled:opacity-50 text-white py-2 rounded-lg font-medium transition-colors"
+              className="flex-1 bg-gray-900 hover:bg-gray-800 disabled:opacity-50 text-white py-2 rounded-lg font-medium transition-colors"
             >
               {loading ? "Importing..." : "Import"}
             </button>
@@ -296,7 +296,7 @@ export function UnlinkWalletSetup() {
                 setShowImport(false);
                 setImportInput("");
               }}
-              className="px-4 py-2 text-gray-400 hover:text-white transition-colors"
+              className="px-4 py-2 text-gray-500 hover:text-gray-900 transition-colors"
             >
               Cancel
             </button>
@@ -304,19 +304,19 @@ export function UnlinkWalletSetup() {
         </div>
       ) : (
         <div className="space-y-3">
-          <p className="text-sm text-gray-400">
+          <p className="text-sm text-gray-500">
             Create a new private wallet or import an existing one to send and receive shielded payments.
           </p>
           <button
             onClick={handleCreateWallet}
             disabled={loading}
-            className="w-full bg-emerald-600 hover:bg-emerald-500 disabled:opacity-50 text-white py-2.5 rounded-lg font-medium transition-colors"
+            className="w-full bg-gray-900 hover:bg-gray-800 disabled:opacity-50 text-white py-2.5 rounded-lg font-medium transition-colors"
           >
             {loading ? "Creating..." : "Create New Wallet"}
           </button>
           <button
             onClick={() => setShowImport(true)}
-            className="w-full border border-gray-700 hover:border-gray-600 text-gray-300 py-2.5 rounded-lg font-medium transition-colors"
+            className="w-full border border-gray-300 hover:border-gray-200 text-gray-600 py-2.5 rounded-lg font-medium transition-colors"
           >
             Import Existing Wallet
           </button>

@@ -46,68 +46,68 @@ export function WithdrawOnly() {
   if (!ready || !walletExists) return null;
 
   return (
-    <div className="bg-gray-900 rounded-xl border border-gray-800 overflow-hidden">
-      <div className="flex items-center gap-2 p-6 border-b border-gray-800">
-        <ArrowUpFromLine size={20} className="text-emerald-400" />
-        <h2 className="text-lg font-semibold text-white">Withdraw</h2>
+    <div className="bg-white rounded-xl border border-gray-200 overflow-hidden">
+      <div className="flex items-center gap-2 p-6 border-b border-gray-200">
+        <ArrowUpFromLine size={20} className="text-teal-600" />
+        <h2 className="text-lg font-semibold text-gray-900">Withdraw</h2>
       </div>
 
       <div className="p-6">
-        <div className={`bg-gray-800 rounded-lg p-4 mb-4 transition-all ${isBalanceLoading ? "border border-emerald-800 animate-pulse" : ""}`}>
+        <div className={`bg-gray-100 rounded-lg p-4 mb-4 transition-all ${isBalanceLoading ? "border border-gray-200 animate-pulse" : ""}`}>
           <p className="text-xs text-gray-500 mb-1">Shielded Balance</p>
           <div className="flex items-center gap-2">
             {isBalanceLoading ? (
               <>
-                <Loader2 size={22} className="text-emerald-400 animate-spin" />
-                <p className="text-lg text-gray-400">Updating balance...</p>
+                <Loader2 size={22} className="text-teal-600 animate-spin" />
+                <p className="text-lg text-gray-500">Updating balance...</p>
               </>
             ) : (
-              <p className="text-2xl font-bold text-white">
-                {formatAmount(monBalance, 18)} <span className="text-sm text-gray-400">MON</span>
+              <p className="text-2xl font-bold text-gray-900">
+                {formatAmount(monBalance, 18)} <span className="text-sm text-gray-500">MON</span>
               </p>
             )}
           </div>
         </div>
 
         {status && (
-          <div className="flex items-center gap-2 bg-emerald-900/30 border border-emerald-800 rounded-lg p-3 mb-4">
-            <Loader2 size={14} className="text-emerald-400 animate-spin" />
-            <p className="text-sm text-emerald-400">{status}</p>
+          <div className="flex items-center gap-2 bg-gray-50 border border-gray-200 rounded-lg p-3 mb-4">
+            <Loader2 size={14} className="text-teal-600 animate-spin" />
+            <p className="text-sm text-teal-600">{status}</p>
           </div>
         )}
 
         {error && (
           <div className="bg-red-900/30 border border-red-800 rounded-lg p-3 mb-4">
-            <p className="text-sm text-red-400">{error}</p>
+            <p className="text-sm text-red-500">{error}</p>
           </div>
         )}
 
         <div className="space-y-3">
           <div>
-            <label className="text-xs text-gray-400 mb-1 block">Amount (MON)</label>
+            <label className="text-xs text-gray-500 mb-1 block">Amount (MON)</label>
             <input
               type="number"
               value={withdrawAmount}
               onChange={(e) => setWithdrawAmount(e.target.value)}
               placeholder="0.0"
               step="0.01"
-              className="w-full bg-gray-800 border border-gray-700 rounded-lg p-3 text-white placeholder-gray-500 focus:border-emerald-500 focus:outline-none"
+              className="w-full bg-gray-50 border border-gray-300 rounded-lg p-3 text-gray-900 placeholder-gray-500 focus:border-emerald-500 focus:outline-none"
             />
           </div>
           <div>
-            <label className="text-xs text-gray-400 mb-1 block">Your Wallet Address (0x...)</label>
+            <label className="text-xs text-gray-500 mb-1 block">Your Wallet Address (0x...)</label>
             <input
               type="text"
               value={withdrawAddress}
               onChange={(e) => setWithdrawAddress(e.target.value)}
               placeholder="0x..."
-              className="w-full bg-gray-800 border border-gray-700 rounded-lg p-3 text-white placeholder-gray-500 focus:border-emerald-500 focus:outline-none font-mono text-sm"
+              className="w-full bg-gray-50 border border-gray-300 rounded-lg p-3 text-gray-900 placeholder-gray-500 focus:border-emerald-500 focus:outline-none font-mono text-sm"
             />
           </div>
           <button
             onClick={handleWithdraw}
             disabled={!withdrawAmount || !withdrawAddress || busy}
-            className="w-full bg-emerald-600 hover:bg-emerald-500 disabled:opacity-50 disabled:cursor-not-allowed text-white py-3 rounded-lg font-medium transition-colors"
+            className="w-full bg-gray-900 hover:bg-gray-800 disabled:opacity-50 disabled:cursor-not-allowed text-white py-3 rounded-lg font-medium transition-colors"
           >
             {busy ? "Processing..." : "Withdraw to Wallet"}
           </button>

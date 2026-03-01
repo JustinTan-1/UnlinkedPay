@@ -34,19 +34,19 @@ export function TransactionHistory({ recipients = [], isEmployeeView = false }: 
   if (!ready || !walletExists) return null;
 
   return (
-    <div className="bg-gray-900 rounded-xl border border-gray-800 overflow-hidden">
-      <div className="p-6 border-b border-gray-800">
+    <div className="bg-white rounded-xl border border-gray-200 overflow-hidden">
+      <div className="p-6 border-b border-gray-200">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <History className="text-emerald-400" size={20} />
-            <h2 className="text-lg font-semibold text-white">
+            <History className="text-teal-600" size={20} />
+            <h2 className="text-lg font-semibold text-gray-900">
               Transaction History
             </h2>
           </div>
           <button
             onClick={refresh}
             disabled={loading}
-            className="p-2 text-gray-400 hover:text-white transition-colors"
+            className="p-2 text-gray-500 hover:text-gray-900 transition-colors"
           >
             <RefreshCw
               size={16}
@@ -56,16 +56,16 @@ export function TransactionHistory({ recipients = [], isEmployeeView = false }: 
         </div>
       </div>
 
-      <div className="divide-y divide-gray-800">
+      <div className="divide-y divide-gray-200">
         {loading && history.length === 0 ? (
           <div className="p-8 text-center">
-            <Loader2 className="mx-auto text-emerald-400 animate-spin mb-3" size={24} />
-            <p className="text-sm text-gray-500">Loading history...</p>
+            <Loader2 className="mx-auto text-teal-600 animate-spin mb-3" size={24} />
+            <p className="text-sm text-gray-400">Loading history...</p>
           </div>
         ) : history.length === 0 ? (
           <div className="p-8 text-center">
             <History className="mx-auto text-gray-700 mb-3" size={40} />
-            <p className="text-gray-500 text-sm">No transactions yet</p>
+            <p className="text-gray-400 text-sm">No transactions yet</p>
           </div>
         ) : (
           history.slice(0, 20).map((entry) => {
@@ -90,14 +90,14 @@ export function TransactionHistory({ recipients = [], isEmployeeView = false }: 
             return (
               <div
                 key={entry.id}
-                className="flex items-center justify-between p-4 hover:bg-gray-800/30 transition-colors"
+                className="flex items-center justify-between p-4 hover:bg-gray-50 transition-colors"
               >
                 <div className="flex items-center gap-3">
                   <div
                     className={`w-8 h-8 rounded-full flex items-center justify-center ${
                       isIncoming
-                        ? "bg-emerald-900/50 text-emerald-400"
-                        : "bg-orange-900/50 text-orange-400"
+                        ? "bg-teal-50 text-teal-600"
+                        : "bg-orange-50 text-orange-500"
                     }`}
                   >
                     {isSend ? (
@@ -109,16 +109,16 @@ export function TransactionHistory({ recipients = [], isEmployeeView = false }: 
                     )}
                   </div>
                   <div>
-                    <p className="text-sm font-medium text-white">
+                    <p className="text-sm font-medium text-gray-900">
                       {label}
                     </p>
-                    <p className="text-xs text-gray-500">
+                    <p className="text-xs text-gray-400">
                       {entry.status === "confirmed" ? (
-                        <span className="text-emerald-400">Confirmed</span>
+                        <span className="text-teal-600">Confirmed</span>
                       ) : entry.status === "pending" ? (
-                        <span className="text-yellow-400">Pending</span>
+                        <span className="text-amber-500">Pending</span>
                       ) : (
-                        <span className="text-red-400">Failed</span>
+                        <span className="text-red-500">Failed</span>
                       )}
                       {entry.txHash && (
                         <span className="ml-2 font-mono">
@@ -137,7 +137,7 @@ export function TransactionHistory({ recipients = [], isEmployeeView = false }: 
                       <p
                         key={i}
                         className={`text-sm font-medium ${
-                          isPositive ? "text-emerald-400" : "text-orange-400"
+                          isPositive ? "text-teal-600" : "text-orange-500"
                         }`}
                       >
                         {isPositive ? "+" : "-"}
@@ -146,7 +146,7 @@ export function TransactionHistory({ recipients = [], isEmployeeView = false }: 
                     );
                   })}
                   {entry.timestamp && (
-                    <p className="text-xs text-gray-500">
+                    <p className="text-xs text-gray-400">
                       {new Date(entry.timestamp > 1e12 ? entry.timestamp : entry.timestamp * 1000).toLocaleDateString()}
                     </p>
                   )}

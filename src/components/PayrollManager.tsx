@@ -293,26 +293,26 @@ export function PayrollManager() {
   if (!ready || !walletExists) return null;
 
   return (
-    <div className="bg-gray-900 rounded-xl border border-gray-800 overflow-hidden">
-      <div className="p-6 border-b border-gray-800">
+    <div className="bg-white rounded-xl border border-gray-200 overflow-hidden">
+      <div className="p-6 border-b border-gray-200">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <Users className="text-emerald-400" size={20} />
-            <h2 className="text-lg font-semibold text-white">
+            <Users className="text-teal-600" size={20} />
+            <h2 className="text-lg font-semibold text-gray-900">
               Payroll Manager
             </h2>
           </div>
           <div className="flex items-center gap-2">
             <button
               onClick={() => setShowCsvImport(!showCsvImport)}
-              className="flex items-center gap-1.5 text-sm text-gray-400 hover:text-white border border-gray-700 hover:border-gray-600 px-3 py-1.5 rounded-lg transition-colors"
+              className="flex items-center gap-1.5 text-sm text-gray-500 hover:text-gray-900 border border-gray-300 hover:border-gray-600 px-3 py-1.5 rounded-lg transition-colors"
             >
               <Upload size={14} />
               CSV
             </button>
             <button
               onClick={() => setShowAddForm(!showAddForm)}
-              className="flex items-center gap-1.5 text-sm bg-emerald-600 hover:bg-emerald-500 text-white px-3 py-1.5 rounded-lg transition-colors"
+              className="flex items-center gap-1.5 text-sm bg-gray-900 hover:bg-gray-800 text-white px-3 py-1.5 rounded-lg transition-colors"
             >
               <Plus size={14} />
               Add Employee
@@ -323,15 +323,15 @@ export function PayrollManager() {
 
       {/* CSV Import */}
       {showCsvImport && (
-        <div className="p-4 border-b border-gray-800 bg-gray-800/50">
-          <p className="text-xs text-gray-400 mb-2">
+        <div className="p-4 border-b border-gray-200 bg-gray-50">
+          <p className="text-xs text-gray-500 mb-2">
             Format: Name, Unlink Address, Amount (MON) — one per line
           </p>
 
           {/* File upload */}
-          <label className="flex items-center justify-center gap-2 w-full border-2 border-dashed border-gray-700 hover:border-emerald-500 rounded-lg p-4 mb-3 cursor-pointer transition-colors">
-            <Upload size={16} className="text-gray-400" />
-            <span className="text-sm text-gray-400">Upload .csv file</span>
+          <label className="flex items-center justify-center gap-2 w-full border-2 border-dashed border-gray-300 hover:border-emerald-500 rounded-lg p-4 mb-3 cursor-pointer transition-colors">
+            <Upload size={16} className="text-gray-500" />
+            <span className="text-sm text-gray-500">Upload .csv file</span>
             <input
               type="file"
               accept=".csv,.txt"
@@ -346,13 +346,13 @@ export function PayrollManager() {
             value={csvInput}
             onChange={(e) => setCsvInput(e.target.value)}
             placeholder={"Alice, unlink1abc..., 1.5\nBob, unlink1def..., 2.0"}
-            className="w-full bg-gray-800 border border-gray-700 rounded-lg p-3 text-sm text-white placeholder-gray-500 resize-none h-20 focus:border-emerald-500 focus:outline-none font-mono"
+            className="w-full bg-gray-50 border border-gray-300 rounded-lg p-3 text-sm text-gray-900 placeholder-gray-400 resize-none h-20 focus:border-emerald-500 focus:outline-none font-mono"
           />
           <div className="flex gap-2 mt-2">
             <button
               onClick={handleCsvImport}
               disabled={!csvInput.trim()}
-              className="bg-emerald-600 hover:bg-emerald-500 disabled:opacity-50 text-white px-4 py-1.5 rounded-lg text-sm transition-colors"
+              className="bg-gray-900 hover:bg-gray-800 disabled:opacity-50 text-white px-4 py-1.5 rounded-lg text-sm transition-colors"
             >
               Import
             </button>
@@ -361,7 +361,7 @@ export function PayrollManager() {
                 setShowCsvImport(false);
                 setCsvInput("");
               }}
-              className="text-gray-400 hover:text-white px-4 py-1.5 text-sm transition-colors"
+              className="text-gray-500 hover:text-gray-900 px-4 py-1.5 text-sm transition-colors"
             >
               Cancel
             </button>
@@ -371,21 +371,21 @@ export function PayrollManager() {
 
       {/* Add Employee Form */}
       {showAddForm && (
-        <div className="p-4 border-b border-gray-800 bg-gray-800/50">
+        <div className="p-4 border-b border-gray-200 bg-gray-50">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
             <input
               type="text"
               value={newName}
               onChange={(e) => setNewName(e.target.value)}
               placeholder="Employee name"
-              className="bg-gray-800 border border-gray-700 rounded-lg p-2.5 text-sm text-white placeholder-gray-500 focus:border-emerald-500 focus:outline-none"
+              className="bg-gray-50 border border-gray-300 rounded-lg p-2.5 text-sm text-gray-900 placeholder-gray-400 focus:border-emerald-500 focus:outline-none"
             />
             <input
               type="text"
               value={newAddress}
               onChange={(e) => setNewAddress(e.target.value)}
               placeholder="unlink1..."
-              className="bg-gray-800 border border-gray-700 rounded-lg p-2.5 text-sm text-white placeholder-gray-500 focus:border-emerald-500 focus:outline-none font-mono"
+              className="bg-gray-50 border border-gray-300 rounded-lg p-2.5 text-sm text-gray-900 placeholder-gray-400 focus:border-emerald-500 focus:outline-none font-mono"
             />
             <input
               type="number"
@@ -393,20 +393,20 @@ export function PayrollManager() {
               onChange={(e) => setNewAmount(e.target.value)}
               placeholder="Amount (MON)"
               step="0.01"
-              className="bg-gray-800 border border-gray-700 rounded-lg p-2.5 text-sm text-white placeholder-gray-500 focus:border-emerald-500 focus:outline-none"
+              className="bg-gray-50 border border-gray-300 rounded-lg p-2.5 text-sm text-gray-900 placeholder-gray-400 focus:border-emerald-500 focus:outline-none"
             />
           </div>
           <div className="flex gap-2 mt-3">
             <button
               onClick={addRecipient}
               disabled={!newName || !newAddress || !newAmount}
-              className="bg-emerald-600 hover:bg-emerald-500 disabled:opacity-50 text-white px-4 py-1.5 rounded-lg text-sm transition-colors"
+              className="bg-gray-900 hover:bg-gray-800 disabled:opacity-50 text-white px-4 py-1.5 rounded-lg text-sm transition-colors"
             >
               Add
             </button>
             <button
               onClick={() => setShowAddForm(false)}
-              className="text-gray-400 hover:text-white px-4 py-1.5 text-sm transition-colors"
+              className="text-gray-500 hover:text-gray-900 px-4 py-1.5 text-sm transition-colors"
             >
               Cancel
             </button>
@@ -415,7 +415,7 @@ export function PayrollManager() {
       )}
 
       {/* Employee List */}
-      <div className="divide-y divide-gray-800">
+      <div className="divide-y divide-gray-200">
         {recipients.length === 0 ? (
           <div className="p-8 text-center">
             <Users className="mx-auto text-gray-700 mb-3" size={40} />
@@ -429,14 +429,14 @@ export function PayrollManager() {
             return (
               <div
                 key={r.id}
-                className="flex items-center justify-between p-4 hover:bg-gray-800/30 transition-colors"
+                className="flex items-center justify-between p-4 hover:bg-gray-50 transition-colors"
               >
                 <div className="flex items-center gap-3 min-w-0">
-                  <div className="w-8 h-8 bg-gray-800 rounded-full flex items-center justify-center text-sm font-medium text-emerald-400">
+                  <div className="w-8 h-8 bg-gray-100 rounded-full flex items-center justify-center text-sm font-medium text-teal-600">
                     {r.name[0]?.toUpperCase()}
                   </div>
                   <div className="min-w-0">
-                    <p className="text-sm font-medium text-white">{r.name}</p>
+                    <p className="text-sm font-medium text-gray-900">{r.name}</p>
                     <p className="text-xs text-gray-500 font-mono truncate">
                       {r.unlinkAddress}
                     </p>
@@ -444,7 +444,7 @@ export function PayrollManager() {
                 </div>
                 <div className="flex items-center gap-3">
                   <div className="text-right">
-                    <p className="text-sm font-medium text-white">
+                    <p className="text-sm font-medium text-gray-900">
                       {r.amount} MON
                     </p>
                     {ps && (
@@ -452,11 +452,11 @@ export function PayrollManager() {
                         <p
                           className={`text-xs ${
                             ps.status === "sent"
-                              ? "text-emerald-400"
+                              ? "text-teal-600"
                               : ps.status === "failed"
-                              ? "text-red-400"
+                              ? "text-red-500"
                               : ps.status === "sending"
-                              ? "text-yellow-400"
+                              ? "text-amber-500"
                               : "text-gray-500"
                           }`}
                         >
@@ -475,7 +475,7 @@ export function PayrollManager() {
                           {ps.status}
                         </p>
                         {ps.error && (
-                          <p className="text-xs text-red-400/70 max-w-[200px] truncate" title={ps.error}>
+                          <p className="text-xs text-red-500/70 max-w-[200px] truncate" title={ps.error}>
                             {ps.error}
                           </p>
                         )}
@@ -485,7 +485,7 @@ export function PayrollManager() {
                   {!isExecuting && (
                     <button
                       onClick={() => removeRecipient(r.id)}
-                      className="p-1.5 text-gray-600 hover:text-red-400 transition-colors"
+                      className="p-1.5 text-gray-600 hover:text-red-500 transition-colors"
                     >
                       <Trash2 size={14} />
                     </button>
@@ -499,25 +499,25 @@ export function PayrollManager() {
 
       {/* Footer / Execute */}
       {recipients.length > 0 && (
-        <div className="p-4 border-t border-gray-800 bg-gray-800/30">
+        <div className="p-4 border-t border-gray-200 bg-gray-50">
           <div className="flex items-center justify-between mb-3">
             <div className="flex items-center gap-2">
-              <DollarSign size={16} className="text-gray-400" />
-              <span className="text-sm text-gray-400">Total Payroll</span>
+              <DollarSign size={16} className="text-gray-500" />
+              <span className="text-sm text-gray-500">Total Payroll</span>
             </div>
-            <span className="text-lg font-bold text-white">
+            <span className="text-lg font-bold text-gray-900">
               {totalPayroll.toFixed(4)} MON
             </span>
           </div>
           <div className="flex items-center justify-between mb-1">
             <span className="text-xs text-gray-500">Shielded Balance</span>
             {balanceLoading ? (
-              <span className="flex items-center gap-1 text-xs text-gray-400">
-                <Loader2 size={12} className="animate-spin text-emerald-400" />
+              <span className="flex items-center gap-1 text-xs text-gray-500">
+                <Loader2 size={12} className="animate-spin text-teal-600" />
                 Updating...
               </span>
             ) : (
-              <span className="text-xs text-gray-400">
+              <span className="text-xs text-gray-500">
                 {formatAmount(monBalance, 18)} MON
               </span>
             )}
@@ -525,23 +525,23 @@ export function PayrollManager() {
           {needsDeposit && (
             <div className="flex items-center justify-between mb-1">
               <span className="text-xs text-gray-500">Auto-deposit needed</span>
-              <span className="text-xs text-yellow-400">
+              <span className="text-xs text-amber-500">
                 +{formatAmount(depositNeeded, 18)} MON from wallet
               </span>
             </div>
           )}
 
           {executionStep && (
-            <div className="flex items-center gap-2 bg-emerald-900/30 border border-emerald-800 rounded-lg p-3 my-3">
-              <Loader2 size={14} className="text-emerald-400 animate-spin" />
-              <p className="text-sm text-emerald-400">{executionStep}</p>
+            <div className="flex items-center gap-2 bg-gray-50 border border-gray-200 rounded-lg p-3 my-3">
+              <Loader2 size={14} className="text-teal-600 animate-spin" />
+              <p className="text-sm text-teal-600">{executionStep}</p>
             </div>
           )}
 
           <button
             onClick={executePayroll}
             disabled={isExecuting || busy || !address}
-            className="w-full flex items-center justify-center gap-2 bg-emerald-600 hover:bg-emerald-500 disabled:opacity-50 disabled:cursor-not-allowed text-white py-3 rounded-lg font-medium transition-colors mt-2"
+            className="w-full flex items-center justify-center gap-2 bg-gray-900 hover:bg-gray-800 disabled:opacity-50 disabled:cursor-not-allowed text-white py-3 rounded-lg font-medium transition-colors mt-2"
           >
             {isExecuting ? (
               <>

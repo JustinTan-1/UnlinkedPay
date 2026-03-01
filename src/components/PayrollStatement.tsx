@@ -216,16 +216,16 @@ export function PayrollStatement() {
   }
 
   return (
-    <div className="bg-gray-900 rounded-xl border border-gray-800 overflow-hidden">
-      <div className="flex items-center gap-2 p-6 border-b border-gray-800">
-        <FileText size={20} className="text-emerald-400" />
-        <h2 className="text-lg font-semibold text-white">Payroll Statement</h2>
+    <div className="bg-white rounded-xl border border-gray-200 overflow-hidden">
+      <div className="flex items-center gap-2 p-6 border-b border-gray-200">
+        <FileText size={20} className="text-teal-600" />
+        <h2 className="text-lg font-semibold text-gray-900">Payroll Statement</h2>
       </div>
 
       <div className="p-6 space-y-4">
         {/* Period selector */}
         <div>
-          <label className="text-xs text-gray-400 mb-2 block">Statement Period</label>
+          <label className="text-xs text-gray-500 mb-2 block">Statement Period</label>
           <div className="grid grid-cols-2 gap-2">
             {([
               ["ytd", "Year to Date"],
@@ -238,8 +238,8 @@ export function PayrollStatement() {
                 onClick={() => setPeriod(value)}
                 className={`text-sm py-2 px-3 rounded-lg border transition-colors ${
                   period === value
-                    ? "border-emerald-500 bg-emerald-900/30 text-emerald-400"
-                    : "border-gray-700 text-gray-400 hover:border-gray-600"
+                    ? "border-emerald-500 bg-gray-50 text-teal-600"
+                    : "border-gray-300 text-gray-500 hover:border-gray-600"
                 }`}
               >
                 {label}
@@ -249,17 +249,17 @@ export function PayrollStatement() {
         </div>
 
         {/* Summary preview */}
-        <div className="bg-gray-800 rounded-lg p-4 space-y-2">
+        <div className="bg-gray-100 rounded-lg p-4 space-y-2">
           <p className="text-xs text-gray-500 mb-2">{getPeriodLabel()}</p>
           <div className="flex justify-between">
-            <span className="text-sm text-gray-400">Salary Received</span>
-            <span className="text-sm text-emerald-400 font-medium">
+            <span className="text-sm text-gray-500">Salary Received</span>
+            <span className="text-sm text-teal-600 font-medium">
               {formatAmount(totalReceived, 18)} MON
             </span>
           </div>
-          <div className="flex justify-between border-t border-gray-700 pt-2 mt-2">
-            <span className="text-sm text-gray-400">Payments</span>
-            <span className="text-sm text-white font-medium">{paymentCount}</span>
+          <div className="flex justify-between border-t border-gray-300 pt-2 mt-2">
+            <span className="text-sm text-gray-500">Payments</span>
+            <span className="text-sm text-gray-900 font-medium">{paymentCount}</span>
           </div>
         </div>
 
@@ -267,7 +267,7 @@ export function PayrollStatement() {
         <button
           onClick={generatePDF}
           disabled={generating || filtered.length === 0}
-          className="w-full flex items-center justify-center gap-2 bg-emerald-600 hover:bg-emerald-500 disabled:opacity-50 disabled:cursor-not-allowed text-white py-3 rounded-lg font-medium transition-colors"
+          className="w-full flex items-center justify-center gap-2 bg-gray-900 hover:bg-gray-800 disabled:opacity-50 disabled:cursor-not-allowed text-white py-3 rounded-lg font-medium transition-colors"
         >
           {generating ? (
             <>

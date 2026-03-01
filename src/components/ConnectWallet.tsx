@@ -51,15 +51,15 @@ export function ConnectWallet() {
   if (isConnected && address) {
     return (
       <div className="flex items-center gap-3">
-        <div className="flex items-center gap-2 bg-gray-800 rounded-lg px-3 py-2">
+        <div className="flex items-center gap-2 bg-gray-100 rounded-lg px-3 py-2">
           <div className="w-2 h-2 bg-green-400 rounded-full" />
-          <span className="text-sm text-gray-300 font-mono">
+          <span className="text-sm text-gray-600 font-mono">
             {address.slice(0, 6)}...{address.slice(-4)}
           </span>
         </div>
         <button
           onClick={() => { disconnect(); router.push("/"); }}
-          className="p-2 text-gray-400 hover:text-white transition-colors"
+          className="p-2 text-gray-500 hover:text-white transition-colors"
           title="Disconnect"
         >
           <LogOut size={18} />
@@ -72,7 +72,7 @@ export function ConnectWallet() {
     <button
       onClick={() => connect({ connector: injected() })}
       disabled={isPending}
-      className="flex items-center gap-2 bg-emerald-600 hover:bg-emerald-500 disabled:opacity-50 text-white px-4 py-2 rounded-lg font-medium transition-colors"
+      className="flex items-center gap-2 bg-gray-900 hover:bg-gray-800 disabled:opacity-50 text-white px-4 py-2 rounded-lg font-medium transition-colors"
     >
       <Wallet size={18} />
       {isPending ? "Connecting..." : "Connect Wallet"}
